@@ -4,19 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Fracture Segmentation Demo</title>
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          min-height: 100vh;
+          font-family: Arial, sans-serif;
+          padding-top: 30px;
+        }
+        form {
+          margin-top: 20px;
+          margin-bottom: 30px;
+          text-align: center;
+        }
+        img {
+          max-width: 512px;
+          margin-top: 1em;
+          border: 1px solid #ccc;
+        }
+      </style>
   </head>
   <body>
     <h1>Upload a Core Image</h1>
 
     <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
       <input type="file"   name="file" accept="image/*" required>
-      <button type="submit">Run Inference</button>
+      <button type="submit">Generate Image</button>
     </form>
 
     <h2>Predicted Mask</h2>
-    <!-- Hidden until we get a response -->
     <img id="resultMask" src="" alt="Your mask will appear here"
-         style="display:none; max-width:512px; margin-top:1em; border:1px solid #ccc;" />
+         style="display:none;" />
 
     <script>
       const form = document.getElementById('uploadForm');
