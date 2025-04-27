@@ -38,17 +38,14 @@ def predict():
     if "file" not in request.files:
         return jsonify({"error": "no file provided"}), 400
 
-    # 4a) Read image
     img = Image.open(request.files["file"].stream).convert("RGB")
-    x   = preprocess(img).unsqueeze(0).to(device)  # [1,3,256,256]
+    x   = preprocess(img).unsqueeze(0).to(device)
 
-    # 4b) Inference
     with torch.no_grad():
-        logits = model(x)                       # [1,1,256,256]
+        logits = model(x)     
         probs  = torch.sigmoid(logits).cpu()
-        mask   = (probs > 0.5).type(torch.uint8)*255
-
-    # 4c) Encode and return
+        mask   = (probs > 0.9).type(torch.uint8)*255
+        
     mask_b64 = encode_mask(mask)
     return jsonify({"mask": mask_b64})
 
