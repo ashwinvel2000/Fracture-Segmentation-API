@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fracture Segmentation Demo</title>
+  </head>
+  <body>
+    <h1>Upload a Core Image</h1>
+
+    <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
+      <input type="file"   name="file" accept="image/*" required>
+      <button type="submit">Run Inference</button>
+    </form>
+
+    <h2>Predicted Mask</h2>
+    <!-- Hidden until we get a response -->
+    <img id="resultMask" src="" alt="Your mask will appear here"
+         style="display:none; max-width:512px; margin-top:1em; border:1px solid #ccc;" />
+
+    <script>
+      const form = document.getElementById('uploadForm');
+      const imgEl = document.getElementById('resultMask');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const data = new FormData(form);
+        const resp = await fetch('/predict', { method: 'POST', body: data });
+        const payload = await resp.json();
+
+        // payload.mask is base64-encoded PNG
+        imgEl.src = 'data:image/png;base64,' + payload.mask;
+        imgEl.style.display = 'block';
+      });
+    </script>
+  </body>
+</html>
