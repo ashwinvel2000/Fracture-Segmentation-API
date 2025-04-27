@@ -19,5 +19,33 @@ The web app allows users to upload an image and view the predicted mask directly
 
 ### 1. Clone this repository
 ```bash
-git clone https://github.com/YOUR-USERNAME/fracture-segmentation-api.git
+git clone https://github.com/ashwinvel2000/Fracture-Segmentation-Api.git
 cd fracture-segmentation-api
+```
+### 2. Create a virtual environment (recommended)
+Set up a clean environment for the project dependencies:
+```bash
+python -m venv venv
+source venv/bin/activate
+```
+### 3. Install the dependencies
+Install the required Python libraries:
+```bash
+pip install -r requirements.txt
+```
+### 4. Due to GitHub file size limits, the model (model_clahe.pkl) is hosted externally.
+
+Download the model file manually here:
+
+➡️ https://drive.google.com/file/d/1RKfkalXJBcoKwmP5P24SxHrLCSADkp-s/view?usp=drive_link
+
+After downloading, place model_clahe.pkl into the project root directory (same folder as main.py).
+
+### 5. Run the Flask app
+Start the API server locally:
+```bash
+python main.py
+```
+Then open your browser and navigate to host site.
+You can upload a core image and view the predicted fracture mask directly in your browser!
+
