@@ -23,17 +23,15 @@ git clone https://github.com/ashwinvel2000/Fracture-Segmentation-Api.git
 cd fracture-segmentation-api
 ```
 ### 2. Create a virtual environment (recommended)
-Set up a clean environment for the project dependencies:
+Create a new Conda environment using the provided environment.yml file:
 ```bash
-python -m venv venv
-source venv/bin/activate
+conda env create -f environment.yml
 ```
-### 3. Install the dependencies
-Install the required Python libraries:
+Then activate the environment:
 ```bash
-pip install -r requirements.txt
+conda activate fracture-seg-env
 ```
-### 4. Due to GitHub file size limits, the model (model_clahe.pkl) is hosted externally.
+### 3. Due to GitHub file size limits, the model (model_clahe.pkl) is hosted externally.
 
 Download the model file manually here:
 
@@ -41,7 +39,7 @@ Download the model file manually here:
 
 After downloading, place model_clahe.pkl into the project root directory (same folder as main.py).
 
-### 5. Run the Flask app
+### 4. Run the Flask app
 Start the API server locally:
 ```bash
 python main.py
