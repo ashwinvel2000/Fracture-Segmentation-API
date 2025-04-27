@@ -1,7 +1,7 @@
 # Fracture Segmentation Inference API
 
 This project demonstrates a simple Flask-based Inference API for fracture segmentation from core images.  
-A trained U-Net model predicts a binary mask highlighting fracture zones.
+A trained Attention U-Net model predicts a binary mask highlighting fracture zones.
 
 The web app allows users to upload an image and view the predicted mask directly in their browser, without needing to reload the page.
 
