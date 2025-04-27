@@ -12,11 +12,10 @@ The web app allows users to upload an image and view the predicted mask directly
 - Upload a core image through a web interface
 - Perform inference using a trained U-Net model
 - Return and display a predicted fracture mask immediately
-- Lightweight and easy-to-deploy Flask server
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone this repository
 ```bash
